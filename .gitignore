@@ -1,0 +1,6 @@
+db.sqlite3
+.env
+.idea/
+__pycache__/
+creds.py
+`
