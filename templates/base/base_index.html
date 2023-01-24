@@ -1,6 +1,7 @@
 {% load  static %}
 
 
+
 <!DOCTYPE html>
 
 
@@ -14,24 +15,27 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon
-    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+    <link href="" rel="icon">
     -->
 
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+
     <!-- Font Awesome -->
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
 
     <!-- Libraries Stylesheet -->
     <link href="{% static 'index/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'index/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'index/css/auth.css' %}" rel="stylesheet">
 </head>
-
 
 <body>
     <!-- Topbar Start -->
@@ -100,14 +104,14 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
                     <h6 class="m-0">Categories</h6>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
-                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link" data-toggle="dropdown">Dresses <i class="fa fa-angle-down float-right mt-1"></i></a>
@@ -139,48 +143,75 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
-                            <a href="{% url 'shop' %}" class="nav-item nav-link active">Shop</a>
-                            <a href="{% url 'detail' %}" class="nav-item nav-link">Shop Detail</a>
-                            <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="{% url 'cart' %}" class="dropdown-item">Shopping Cart</a>
-                                    <a href="{% url 'checkout' %}" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                            <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                            <a href="{% url 'index' %}" class="nav-item nav-link">Home  <i class="fa-solid fa-house"></i></a>
+                            <a href="{% url 'shop' %}" class="nav-item nav-link active">Shop  <i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="{% url 'detail' %}" class="nav-item nav-link">Shop Detail  <i class="fa-solid fa-circle-info"></i></a>
+                            <a href="{% url 'contact' %}" class="nav-item nav-link">Contact  <i class="fa-solid fa-address-book"></i></a>
+
+
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
+									{%  if user.is_authenticated %}
+                                       <div class="nav-item dropdown">
+
+                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa-solid fa-user"></i>   {{ user.username }}</a>
+
+                                                <div class="dropdown-menu rounded-0 m-0">
+                                                    <a href="{% url 'cart' %}" class="dropdown-item">Shopping Cart  <i class="fa-solid fa-bag-shopping"></i></a>
+                                                    <a href="{% url 'checkout' %}" class="dropdown-item">Checkout  <i class="fa-solid fa-money-bill"></i></a>
+                                                    <a href="{% url 'logout' %}" class="dropdown-item">Log out    <i class="fa-solid fa-right-from-bracket"></i></a>
+                                                </div>
+                                        </div>
+
+									{% else %}
+                                         <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
+                                         <a href="#" class="nav-item nav-link">Register</a>
+									{% endif %}
                         </div>
                     </div>
                 </nav>
+                <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" style="height: 410px;">
+                            <img class="img-fluid" src="{% static 'index/img/carousel-1.jpg' %}" alt="Image">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
+                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="height: 410px;">
+                            <img class="img-fluid" src="{% static 'index/img/carousel-2.jpg' %}" alt="Image">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
+                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-prev-icon mb-n2"></span>
+                        </div>
+                    </a>
+                    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-next-icon mb-n2"></span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     <!-- Navbar End -->
-    <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">{% block h1 %} {% endblock h1 %}</h1>
-            <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
-                <p class="m-0 px-2">-</p>
-                <p class="m-0">{% block p %} {% endblock p %}</p>
-            </div>
-        </div>
-    </div>
-    <!-- Page Header End -->
+    {% block container %}
 
-
-
-{% block container %}
-
-{% endblock container%}
-
-<!-- Footer Start -->
+    {% endblock container %}
+    <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
@@ -208,7 +239,7 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="{% url 'index' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                           <a class="text-dark mb-2" href="{% url 'index' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             <a class="text-dark mb-2" href="{% url 'shop' %}"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
                             <a class="text-dark mb-2" href="{% url 'detail' %}"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
                             <a class="text-dark mb-2" href="{% url 'cart' %}"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
@@ -254,9 +285,13 @@
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
+
+   <!-- JavaScript Libraries -->
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
     <script src="{% static 'index/lib/easing/easing.min.js' %}"></script>
     <script src="{% static 'index/lib/owlcarousel/owl.carousel.min.js' %}"></script>
 
@@ -266,6 +301,9 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'index/js/main.js' %}"></script>
+
+
 </body>
 
 </html>
+

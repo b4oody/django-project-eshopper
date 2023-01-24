@@ -12,5 +12,7 @@ urlpatterns = [
     path('cart/', include('pages.urls')),
     path('checkout/', include('pages.urls')),
     path('contact/', include('contact.urls')),
+    path('auth/', include('authentication.urls')),
+
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_URL)

@@ -1,0 +1,58 @@
+.registration-cssave{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.registration-cssave form {
+  max-width:800px;
+  border-radius:10px;
+  text-align: center;
+  background-color:#fff;
+}
+
+.registration-cssave form h3 {
+  font-weight:bold;
+  margin-bottom:30px;
+}
+
+.registration-cssave .item {
+  border-radius:10px;
+  margin-bottom:25px;
+  padding:10px 20px;
+}
+
+.registration-cssave .create-account {
+  border-radius:30px;
+  padding:10px 20px;
+  font-size:18px;
+  font-weight:bold;
+  background-color:#D19C97 ;
+  border:none;
+  color:white;
+  margin-top:20px;
+
+
+}
+
+@media (max-width: 576px) {
+  .registration-cssave form {
+    padding:50px 20px;
+  }
+}
+
+.registration-cssave .register{
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+}
+
+
+.form-input{
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+
+}
+

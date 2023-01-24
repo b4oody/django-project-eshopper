@@ -17,6 +17,8 @@ import creds
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from authentication import apps
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -48,8 +50,13 @@ INSTALLED_APPS = [
     'detail',
     'pages',
     'contact',
+    'authentication',
+    'crispy_forms',
+    'fontawesomefree',
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
