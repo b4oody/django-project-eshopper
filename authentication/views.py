@@ -1,11 +1,7 @@
-from django.contrib.auth.forms import UserCreationForm
-from django.core.checks import messages
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout, authenticate, login
-
-from django.views.generic import  TemplateView
-
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 
 
 def login_user(request):
@@ -32,31 +28,21 @@ def login_user(request):
 
 
 
+def signup(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
 
-
-'''
-class RegisterView(TemplateView):
-    template_name = 'auth/registration.html'
-
-    def get(self, request):
-        user_form = RegisterForm()
-        context = {'user_form': user_form}
-        return render(request, 'auth/registration.html', context)
-
-    def post(self, request):
-        user_form = RegisterForm(request.POST)
-        if user_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
+            email = form.cleaned_data.get('email')
+            user = authenticate(username=username, email=email, password=password)
             login(request, user)
             return redirect('index')
-
-        context = {'user_form': user_form}
-        return render(request, 'auth/registration.html', context)
-
-'''
-
+    else:
+        form = RegisterForm()
+    return render(request, 'auth/register.html', {'form': form})
 
 
 

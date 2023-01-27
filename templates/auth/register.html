@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    Register
+{% endblock title %}
+
+{% block h1 %} REGISTRATION {% endblock h1 %}
+{% block p %} Registration {% endblock p %}
+
+
+{% block container %}
+<div class="registration-cssave">
+    <form action="{% url 'registration' %}" method="post">
+        {% csrf_token %}
+
+
+
+
+
+
+
+
+        <div>
+            <label style="float:left" class="small mb-1" for="{{ for.username.id_for_label }}"><b>Username</b></label><br>
+            {{ form.username}}
+            <span style="color:red; list-style-type: none">{{ form.username.errors }}</span>
+        </div>
+
+
+        <div class="form-group">
+            <label style="float:left" class="small mb-1" for="{{ for.username.id_for_label }}"><b>Email</b></label><br>
+            {{ form.email}}
+          <span style="color:red; list-style-type: none">{{ form.email.errors }}</span>
+        </div>
+
+
+
+        <div class="form-group">
+            <label style="float:left" class="small mb-1" for="{{ for.username.id_for_label }}"><b>Password</b></label><br>
+            {{ form.password1}}
+            <span style="color:red; list-style-type: none">{{ form.password1.errors }}</span>
+        </div>
+
+
+         <div class="form-group">
+            <label style="float:left" class="small mb-1" for="{{ for.username.id_for_label }}"><b>Password</b></label><br>
+            {{ form.password2}}
+           <span style="color:red; list-style-type: none">{{ form.password2.errors }}</span>
+        </div>
+
+         <div class="form-group">
+             <input type="submit" class="btn btn-primary " value="Signup">
+         </div>
+
+    </form>
+</div>
+
+<div class="card-footer text-center">
+          <div class="small"><a href="{% url 'login' %}">Have you a account?  Login</a></div>
+      </div>
+
+
+{% endblock container %}
