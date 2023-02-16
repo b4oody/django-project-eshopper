@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load  static %}
+
 {% block title  %} EShopper - Bootstrap Shop Template {% endblock title %}
 {% block h1 %} SHOP DETAIL {% endblock h1 %}
 {% block p %} Shop Detail {% endblock p %}
@@ -11,9 +12,10 @@
     <div class="container-fluid py-5">
         <div class="row px-xl-5">
             <div class="col-lg-5 pb-5">
-                <div id="product-carousel" class="carousel slide" data-ride="carousel">
+{#                <div id="product-carousel" class="carousel slide" data-ride="carousel">#}
+                <div id="product-carousel"  data-ride="carousel">
                     <div class="carousel-inner border">
-                        {{ product.image.url }}
+                        <img style="height: 400px; width: 500px;" class="img-fluid w-100" src="{{ product.image.url }}" alt="Тут могла бути ваша реклама">
                     </div>
                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                         <i class="fa fa-2x fa-angle-left text-dark"></i>

@@ -50,10 +50,6 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('categ', kwargs={'slug': self.slug})
 
-    @property
-    def photo_url(self):
-        if self.image and hasattr(self.image, 'url'):
-            return self.image.url
 
     def __str__(self):
         return self.name

@@ -13,7 +13,7 @@ urlpatterns = [
     path('detail/<str:slug>/<int:id>', include('detail.urls'))
 
 
-]
-if settings.DEBUG:
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
