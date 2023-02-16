@@ -1,11 +1,13 @@
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout, authenticate, login
+
+from shop.models import Category
 from .forms import LoginForm, RegisterForm
 
 
 def login_user(request):
-    context = {'login_form': LoginForm()}
+    context = {'login_form': LoginForm(), 'categories': Category.objects.all()}
     if request.method == 'POST':
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
@@ -19,6 +21,7 @@ def login_user(request):
         else:
             context = {
                 'login_form': login_form,
+
 
             }
     return render(request, 'auth/login.html', context)
@@ -42,7 +45,7 @@ def signup(request):
             return redirect('index')
     else:
         form = RegisterForm()
-    return render(request, 'auth/register.html', {'form': form})
+    return render(request, 'auth/register.html', {'form': form, 'categories': Category.objects.all()})
 
 
 

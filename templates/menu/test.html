@@ -1,0 +1,49 @@
+
+
+{##}
+{#<nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">#}
+{#    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">#}
+{#        {% for category in categories %}#}
+{#            <div class="nav-item dropdown">#}
+{#                <ul class="list-group">#}
+{#                    <li class="list-group-item">#}
+{#                        <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{##}
+{#        {% endfor %}#}
+{#    </div>#}
+{#</nav>#}
+
+
+
+{% for subcategory in subcategories %}
+    <li class="list-group">
+        {{ subcategory.name }}
+    </li>
+{% endfor %}
+
+{#                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">#}
+                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                    <ul class="list-group">
+                        {% for category in categories %}
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link" data-toggle="dropdown">{{ category.name }}</a>
+                                    <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                                        {% for subcategory in subcategories %}
+                                            <ul class="list-group">
+
+                                                <li><a href="">{{ subcategory.name }}</a></li>
+
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+                            </div>
+                        {% endfor %}
+                    </ul>
+
+
+
+                    </div>
+                </nav>

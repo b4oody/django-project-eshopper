@@ -5032,6 +5032,19 @@ a.badge-dark:focus, a.badge-dark.focus {
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+
+.list-group-item-custom {
+  position: relative;
+  display: block;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+
+
+
+
 .list-group-item.disabled, .list-group-item:disabled {
   color: #6c757d;
   pointer-events: none;
