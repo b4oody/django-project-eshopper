@@ -162,7 +162,7 @@
                                             <a class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa-solid fa-user"></i>   {{ user.username }}</a>
 
                                             <div class="dropdown-menu rounded-0 m-0">
-                                                <a href="{% url 'cart' %}" class="dropdown-item">Shopping Cart  <i class="fa-solid fa-basket-shopping-simple"></i></a>
+                                                <a href="{% url 'cart' %}" class="dropdown-item">Shopping Cart  <i class="fa-solid fa-basket-shopping"></i></a>
                                                 <a href="{% url 'checkout' %}" class="dropdown-item">Checkout  <i class="fa-solid fa-money-bill"></i></a>
                                                 <a href="{% url 'logout' %}" class="dropdown-item">Log out    <i class="fa-solid fa-right-from-bracket"></i></a>
                                             </div>
@@ -174,7 +174,7 @@
                             <a href="{% url 'shop' %}?page=1" class="nav-item nav-link active">Shop  <i class="fa-solid fa-cart-shopping"></i></a>
                             <a href="{% url 'contact' %}" class="nav-item nav-link">Contact  <i class="fa-solid fa-address-book"></i></a>
                             <a href="{% url 'checkout' %}" class="nav-item nav-link">Checkout  <i class="fa-solid fa-money-bill"></i></a>
-
+                            <a href="{% url 'cart' %}" class="nav-item nav-link">Shopping Cart  <i class="fa-solid fa-basket-shopping"></i></a>
                         </div>
 
                         <div class="navbar-nav ml-auto py-0">

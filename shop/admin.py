@@ -1,13 +1,17 @@
 from django.contrib import admin
-from mptt.admin import MPTTModelAdmin, DraggableMPTTAdmin
-from shop.models import Product, Category
+
+from mptt.admin import  DraggableMPTTAdmin
+from shop.models import Product, Category, Size, Color, Order, OrderItem
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price', 'category', 'amount')
+    list_display = ('id', 'name', 'price', 'category', 'amount', 'img_preview')
     list_display_links = ('id', 'name')
     list_filter = ('price',)
     ordering = ('price',)
+
+
+
 
 
 class CategoryAdmin(DraggableMPTTAdmin):
@@ -46,6 +50,23 @@ class CategoryAdmin(DraggableMPTTAdmin):
 
 
 
+class ColorAdmin(admin.ModelAdmin):
+    list_display=('name', 'color_bg')
+admin.site.register(Color, ColorAdmin)
+
+
+
+
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Size)
+
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display=('customer','complete')
+admin.site.register(Order, OrderAdmin)
+
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display=('product', 'order', 'quantity')
+admin.site.register(OrderItem, OrderItemAdmin)
 

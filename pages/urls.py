@@ -7,7 +7,8 @@ from pages import views
 
 urlpatterns = [
     path('cart/', views.cart, name='cart'),
-    path('', views.checkout, name='checkout')
+    path('', views.checkout, name='checkout'),
+
 
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_URL)
